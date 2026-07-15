@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Irfan Nooruddin — Research</title>
+<meta name="description" content="Research page of Irfan Nooruddin — books, articles, policy reports, and data sets.">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --ink-mid: #4a4a46;
+    --ink-light: #7a7a74;
+    --rule: #d8d6ce;
+    --bg: #faf9f6;
+    --accent: #2b4a8c;
+    --accent-light: #eef1f8;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: 'Courier New', monospace;
+    --max: 780px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Header */
+  header {
+    border-bottom: 2px solid var(--ink);
+    padding: 2.5rem 2rem 1.5rem;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  .name {
+    font-family: var(--sans);
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 0;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-mid);
+    margin-top: 0.75rem;
+  }
+
+  .quick-links a {
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 2px 10px;
+    border-radius: 2px;
+    margin-right: 8px;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .quick-links a:hover { background: var(--accent-light); text-decoration: none; }
+
+  /* Main content */
+  main {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  /* Section headings */
+  .section-head {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* Dataset entry */
+  .dataset {
+    margin-bottom: 1.25rem;
+  }
+  .dataset a {
+    font-weight: bold;
+  }
+  .dataset .byline {
+    font-size: 14px;
+    color: var(--ink-mid);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* Book entries */
+  .book {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0 0.5rem;
+    margin-bottom: 1.5rem;
+    align-items: start;
+  }
+  .book-num {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-light);
+    padding-top: 3px;
+    text-align: right;
+  }
+  .book-body { }
+  .book-body p { margin-bottom: 0.25rem; }
+  .book-media {
+    margin-top: 0.4rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--rule);
+  }
+  .book-media li {
+    list-style: none;
+    font-size: 13.5px;
+    color: var(--ink-mid);
+    margin-bottom: 2px;
+  }
+  .book-media li::before { content: "→ "; color: var(--ink-light); }
+  .badge {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid #c2cfe8;
+    padding: 1px 7px;
+    border-radius: 2px;
+    margin-top: 3px;
+  }
+
+  /* Article entries */
+  .article {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0 0.5rem;
+    margin-bottom: 1.25rem;
+    align-items: start;
+  }
+  .article-num {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-light);
+    padding-top: 3px;
+    text-align: right;
+  }
+  .article-body { font-size: 15px; }
+  .article-links {
+    margin-top: 3px;
+    font-family: var(--sans);
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .article-links a {
+    padding: 1px 8px;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
+  .article-links a:hover { background: var(--accent-light); text-decoration: none; }
+  .reprint {
+    font-size: 13.5px;
+    color: var(--ink-mid);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  /* Op-ed note */
+  .note-box {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 1rem;
+    font-size: 14.5px;
+    margin-bottom: 1rem;
+    border-radius: 0 2px 2px 0;
+  }
+
+  footer {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink-light);
+  }
+
+  @media (max-width: 560px) {
+    header, main, footer { padding-left: 1rem; padding-right: 1rem; }
+    .book, .article { grid-template-columns: 22px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="name">Irfan Nooruddin</div>
+  <div class="quick-links">
+    <a href="http://scholar.google.com/citations?user=UpHA1XsAAAAJ" target="_blank">Google Scholar</a>
+    <a href="http://orcid.org/0000-0002-9128-2888" target="_blank">ORCID</a>
+    <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=4431519" target="_blank">SSRN</a>
+    <a href="http://thedata.harvard.edu/dvn/dv/irfan" target="_blank">Dataverse</a>
+    <a href="https://muckrack.com/irfan" target="_blank">Op-Eds</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- DATA SETS -->
+  <div class="section-head">Data Sets</div>
+
+  <div class="dataset">
+    <a href="https://dataverse.harvard.edu/dataverse/ted">TED: A Global Dataset of Political Leaders' Educational and Employment Backgrounds</a>
+    <p>Original data set of 1,733 international heads of government from 1945 to 2015. Variables coding their educational and employment backgrounds are provided.</p>
+    <p class="byline">Co-PIs: <a href="https://www.thomas-flores.com/">Thomas E. Flores</a> &amp; <a href="http://www.gabriellalloyd.com/">Gabriella Lloyd</a></p>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="section-head">Books</div>
+
+  <div class="book">
+    <div class="book-num">[3]</div>
+    <div class="book-body">
+      <p><a href="http://www.utexas.edu/cola/government/faculty/elm377">McDaniel, Eric L.</a>, Irfan Nooruddin, and <a href="https://www.ou.edu/cas/psc/faculty/shortle">Allyson F. Shortle</a>. 2022. <em><a href="https://a.co/d/iiwqXPB">The Everyday Crusade: Christian Nationalism in American Politics</a></em>. <a href="http://www.cup.org/">Cambridge University Press</a>.</p>
+      <div><span class="badge">Choice Outstanding Academic Title</span></div>
+      <div class="book-media">
+        <li><a href="https://www.washingtonpost.com/opinions/letters-to-the-editor/nationalists-in-christianitys-clothing/2021/07/13/c0d3997c-e32a-11eb-88c5-4fd6382c47cb_story.html">2021 letter to the editors, <em>Washington Post</em></a></li>
+        <li><a href="https://www.washingtonpost.com/politics/2022/09/01/marjorie-taylor-greene-christian-nationalist/">2022 op-ed, <em>Washington Post</em> Monkey Cage</a></li>
+        <li><a href="https://lnns.co/QbMIXa-8rpl">2023 Freethought Radio podcast</a></li>
+        <li><a href="https://lnns.co/LAP_Y2iqrHW">2023 <em>Straight White American Jesus</em> podcast</a></li>
+        <li><a href="https://sojo.net/articles/interview/reconstruct/what-we-are-getting-wrong-about-christian-nationalism">2025 <em>Sojourners</em> interview</a></li>
+      </div>
+    </div>
+  </div>
+
+  <div class="book">
+    <div class="book-num">[2]</div>
+    <div class="book-body">
+      <p><a href="http://www.thomas-flores.com/">Flores, Thomas Edward</a>, and Irfan Nooruddin. 2016. <em><a href="http://a.co/9X78mKi">Elections in Hard Times: Building Stronger Democracies in the 21st Century</a></em>. <a href="http://www.cup.org/">Cambridge University Press</a> and <a href="https://www.wilsoncenter.org/woodrow-wilson-center-press">Woodrow Wilson Center Press</a>.</p>
+      <div class="book-media">
+        <li><a href="https://lnns.co/2Q51rpTl9XA">2020 <em>The Hindu In Focus</em> podcast</a></li>
+      </div>
+    </div>
+  </div>
+
+  <div class="book">
+    <div class="book-num">[1]</div>
+    <div class="book-body">
+      <p>Nooruddin, Irfan. 2011. <em><a href="http://www.coalitionpoliticsandeconomicdevelopment.com/">Coalition Politics and Economic Development</a></em>. <a href="http://www.cup.org/">Cambridge University Press</a>.</p>
+      <div class="book-media">
+        <li><a href="https://www.thehindu.com/opinion/op-ed/is-coalition-government-worse-than-single-party-rule/article62109778.ece">2019 discussion, <em>The Hindu</em></a></li>
+        <li><a href="https://profit.pakistantoday.com.pk/2022/06/05/can-coalitions-push-through-reforms/">2022 feature, <em>The Profit</em></a></li>
+        <li><a href="https://lnns.co/YrVM0OSUuZG">2022 <em>Pakistonomy</em> podcast</a></li>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLES -->
+  <div class="section-head">Articles, Book Chapters, Policy Reports</div>
+
+  <div class="article">
+    <div class="article-num">[43]</div>
+    <div class="article-body">
+      <p><a href="https://annameyerrose.com/">Meyerrose, Anna</a>, and Irfan Nooruddin. 2025. "<a href="https://link.springer.com/article/10.1007/s11558-023-09511-6">Trojan Horses in Liberal International Organizations? How Democratic Backsliders Undermine the UNHRC</a>." <em>Review of International Organizations</em>, 20(1): 125–156.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/IALBQQ">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/meyerrose_nooruddin.roio2023.trojan_horses.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[42]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan, and Nita Rudra. 2024. "<a href="https://doi.org/10.1093/jiel/jgae053">From Enthusiasm to Apathy: Dwindling Support for Globalization Amongst Future Generations</a>." <em>Journal of International Economic Law</em>, 27(4): 697–705.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin_rudra.jiel2025.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[41]</div>
+    <div class="article-body">
+      <p><a href="https://erumhaider.wordpress.com/">Haider, Erum</a>, and Irfan Nooruddin. 2024. "<a href="https://doi.org/10.1177/00104140231209961">Well-Behaved Women: Engendering Political Interest in Public Opinion Research</a>." <em>Comparative Political Studies</em>, 57(12): 2046–2079.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/LVXSJA">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/haider_nooruddin.cps2024.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[40]</div>
+    <div class="article-body">
+      <p><a href="https://www.shubhakamalaprasad.com/">Prasad, Shubha Kamala</a>, and Irfan Nooruddin. 2024. "<a href="https://doi.org/10.1177/07388942231198489">States Living in Glasshouses…: Why Domestic Insurgency Changes Voting in the UN Human Rights Council</a>." <em>Conflict Management &amp; Peace Science</em>, 41(5): 556–573.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/L1IN7U">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/prasad_nooruddin.cmps2024.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[39]</div>
+    <div class="article-body">
+      <p>Gupta, Abhishek, Priya Naik, and Irfan Nooruddin. 2024. "Multi-pronged Approach to Inclusive Transformation." In <em><a href="https://reliancefoundation.org/the-next-frontier-publication">The Next Frontier: Charting the Contours of the Post-2030 Development Agenda</a></em>, edited by Nilanjan Ghosh and Vanita Sharma. Delhi: Reliance Foundation, pp. 55–65.</p>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[38]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan. 2023. "<a href="https://academic.oup.com/isr/article/25/2/viad019/7194243">Post-Conflict Democracy Promotion is Dead. Long live Democracy!</a>" <em>International Studies Review</em>, 25.</p>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[37]</div>
+    <div class="article-body">
+      <p>M., Vibhav, and Irfan Nooruddin. 2023. "<a href="https://doi.org/10.1080/14736489.2023.2180915">Trump, Modi, and the Illiberal Consensus</a>." <em>India Review</em>, 22(2): 118–127.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/m_nooruddin.indiareview2023.illiberal_consensus.pdf">PDF</a>
+      </div>
+      <p class="reprint">Reprinted in <em><a href="https://www.routledge.com/India-US-Convergence-and-Divergence-under-the-Trump-Administration/Verma/p/book/9781041035817">India-US Convergence and Divergence under the Trump Administration</a></em>, ed. Raj Verma. London: Routledge, 2025.</p>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[36]</div>
+    <div class="article-body">
+      <p><a href="https://www.thomas-flores.com/">Flores, Thomas E.</a>, and Irfan Nooruddin. 2023. "<a href="https://journals.sagepub.com/doi/10.1177/07388942221120382">Why Incumbents Perpetrate Election Violence During Civil War</a>." <em>Conflict Management &amp; Peace Science</em>, 40(5): 533–553.</p>
+      <div class="article-links">
+        <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/NUI5IT">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/flores_nooruddin.cmps2023.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[35]</div>
+    <div class="article-body">
+      <p><a href="https://www.thomas-flores.com/">Flores, Thomas E.</a>, <a href="http://www.gabriellalloyd.com/">Gabriella Lloyd</a>, and Irfan Nooruddin. 2022. "<a href="https://link.springer.com/article/10.1007/s11558-022-09461-5">When TED Talks, Does Anyone Listen? A New Dataset on Political Leadership</a>." <em>Review of International Organizations</em>, 23(1): 169–199.</p>
+      <div class="article-links">
+        <a href="https://dataverse.harvard.edu/dataverse/ted">TED Data Sets</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/floreslloydnooruddin.rio2022.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[34]</div>
+    <div class="article-body">
+      <p><a href="https://www.phc.ox.ac.uk/team/sara-rotenberg">Rotenberg, Sara</a>, and Irfan Nooruddin. 2022. "<a href="https://www.journalpublicspace.org/index.php/jps/article/view/1482">Getting on Track: Accessibility Policy and the Design of the Mumbai Metro</a>." <em>The Journal of Public Space</em>, 7(2): 29–40.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/rotenberg_nooruddin.jps2022.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[33]</div>
+    <div class="article-body">
+      <p>Bonifai, Niccolò W., Irfan Nooruddin, and <a href="https://nitarudra.com">Nita Rudra</a>. 2021. "<a href="https://www.foreignaffairs.com/articles/world/2021-12-03/hidden-threat-globalization">The Hidden Threat to Globalization: Why the Developing World is Turning Against Free Trade</a>." <em>Foreign Affairs</em> (Dec. 3).</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/bonifainooruddinrudra.fa2021.the_hidden_threat_to_globalization.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[32]</div>
+    <div class="article-body">
+      <p><a href="https://nitarudra.com/">Rudra, Nita</a>, Irfan Nooruddin, and Niccolò W. Bonifai. 2021. "<a href="https://doi.org/10.1177/00104140211037575">Globalization Backlash in Developing Countries: Broadening the Research Agenda</a>." <em>Comparative Political Studies</em>, 54(13): 2416–2441.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/5GNMDK">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/rudranooruddinbonifai.cps2021.globalization_backlash_in_developing_countries_final.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[31]</div>
+    <div class="article-body">
+      <p><a href="https://scholar.princeton.edu/amaney-jamal/home">Jamal, Amaney</a>, and Irfan Nooruddin. 2021. "<a href="https://muse.jhu.edu/article/820392">A Delicate Balancing Act: Women's Rights and US Military Intervention in the Arab World</a>." <em>Journal of Middle East Women's Studies</em>, 17(3): 423–448.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/Q3EORA">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/jamal_nooruddin.jmews2021.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[30]</div>
+    <div class="article-body">
+      <p><a href="https://jenniferdresden.com/">Dresden, Jennifer Raymond</a>, <a href="http://www.thomas-flores.com/">Thomas Edward Flores</a>, and Irfan Nooruddin. 2020. "Democracy Promotion and Conflict: Successes and Continuing Challenges." <em>Democracy and Autocracy</em>, 18(1): 10–16.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/dresden_flores_and_nooruddin_democracy_promotion_and_conflict_final.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[29]</div>
+    <div class="article-body">
+      <p><a href="http://annameyerrose.com/">Meyerrose, Anna M.</a>, <a href="http://www.thomas-flores.com/">Thomas Edward Flores</a>, and Irfan Nooruddin. 2019. "<a href="https://oxfordre.com/politics/view/10.1093/acrefore/9780190228637.001.0001/acrefore-9780190228637-e-627">From Elections to Democracy in Hard Times</a>." In <em>Oxford Research Encyclopedia of Politics</em>, ed. Mark Kayser and Stephanie Rickard. New York: Oxford University Press.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/meyerrosefloresnooruddin.ore2019.from_elections_to_democracy_in_hard_times.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[28]</div>
+    <div class="article-body">
+      <p><a href="https://jenniferdresden.com/">Dresden, Jennifer Raymond</a>, <a href="http://www.thomas-flores.com/">Thomas Edward Flores</a>, and Irfan Nooruddin. 2019. <em><a href="https://www.iie.org/en/Research-and-Insights/Publications/DFG-GMU-TOC-Publication">Theories of Democratic Change, Phase III: Transitions from Conflict</a></em>. Washington, D.C.: USAID / IIE. 109pp.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/dresden_flores_nooruddin.usaid_iie2019.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[27]</div>
+    <div class="article-body">
+      <p><a href="https://www.shubhakamalaprasad.com/">Prasad, Shubha Kamala</a>, and Irfan Nooruddin. 2019. "'I am New India': Balancing Economic Liberalism with Social Conservatism." In <em><a href="https://www.csis.org/analysis/asianism-and-universalism-evolution-norms-and-power-modern-asia">Asianism and Universalism: The Evolution of Norms and Power in Modern Asia</a></em>, edited by Nicholas Szechenyi. Washington, DC: CSIS, pp. 21–29.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/190213_szechenyi_asianism_web.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[26]</div>
+    <div class="article-body">
+      <p><a href="https://sites.google.com/site/joelsimmons/">Simmons, Joel W.</a>, <a href="http://www.allenhicken.com/">Allen Hicken</a>, <a href="http://lsa.umich.edu/polisci/people/faculty/kkollman.html">Ken Kollman</a>, and Irfan Nooruddin. 2018. "<a href="http://journals.sagepub.com/doi/pdf/10.1177/1354068816644762">Party System Structure and its Consequences for Foreign Direct Investment</a>." <em>Party Politics</em>, 24(2): 141–153.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/simmonshickenkollmannooruddin.pp2018.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[25]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan. 2016. "<a href="https://www.india-seminar.com/2016/684/684_irfan_nooruddin.htm">Building Better Surveys</a>." <em>Seminar</em>, 684 (August): 71–74.</p>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[24]</div>
+    <div class="article-body">
+      <p><a href="http://www.utexas.edu/cola/government/faculty/elm377">McDaniel, Eric L.</a>, Irfan Nooruddin, and <a href="http://psc.ou.edu/allyson-shortle">Allyson F. Shortle</a>. 2016. "<a href="http://dx.doi.org/10.1017/rep.2015.7">Proud to be an American: How National Pride Shapes Visions of National Identity</a>." <em>Journal of Race, Ethnicity, and Politics</em>, 1(1): 145–176.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/Q5PXZN">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/mcdanielnooruddinshortle.jrep2016.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[23]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan, and <a href="https://sites.google.com/site/joelsimmons/">Joel W. Simmons</a>. 2015. "<a href="http://www.sciencedirect.com/science/article/pii/S0261379414001164">Do Voters Count? Institutions, Voter Turnout, and Public Goods Provision in India</a>." <em>Electoral Studies</em>, 37(1): 1–14.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/EUWXEZ">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin&simmons.es2015.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[22]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan, and <a href="https://sites.google.com/site/byungwonwoo/">Byungwon Woo</a>. 2015. "<a href="http://dx.doi.org/10.1017/psrm.2014.15">Heeding the Sirens: The Politics of IMF Program Participation</a>." <em>Political Science Research and Methods</em>, 3(1): 73–93.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/25962">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin&woo.psrm2015.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[21]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan, and <a href="https://nitarudra.com/">Nita Rudra</a>. 2014. "<a href="http://muse.jhu.edu/journals/world_politics/v066/66.4.nooruddin.html">Are Developing Countries Really Defying the Embedded Liberalism Compact?</a>" <em>World Politics</em>, 66(4): 603–640.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/23993">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin&rudra.wp2014.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[20]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan. 2014. "<a href="http://issuu.com/georgetownsfs/docs/gjaa_1.1_electronic/129?e=4102750/10398940">Leadership and Mandates: India's Prospects for Economic Reforms Under Narendra Modi</a>." <em>Georgetown Journal of Asian Affairs</em>, 1(1): 123–126.</p>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[19]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan. 2014. "<a href="http://inp.sagepub.com/content/2/1/105.full.pdf+html">Making Surveys Work Better: Experiments in Public Opinion Research</a>." <em>Studies in Indian Politics</em>, 2(1): 105–108.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin.sip2014.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[18]</div>
+    <div class="article-body">
+      <p><a href="http://www.thomas-flores.com/">Flores, Thomas Edward</a>, and Irfan Nooruddin. 2012. "<a href="http://dx.doi.org/10.1017/S0022381611001733">The Effect of Elections on Post-Conflict Peace and Reconstruction</a>." <em>Journal of Politics</em>, 73: 558–570.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/CTOSXP">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/floresnooruddin.jop2012.pdf">PDF</a>
+        <a href="http://politicalscience.osu.edu/faculty/nooruddi/research/floresnooruddin.jop2012.appendix.pdf">Online appendix</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[17]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan, and <a href="http://spot.colorado.edu/~sokheys/">Sarah Wilson Sokhey</a>. 2012. "Credible Certification of Child Labor Free Production." In <em><a href="http://amzn.com/1107651697">The Credibility of Transnational NGOs</a></em>, edited by Peter Gourevitch, David A. Lake, and Janice Gross Stein. Cambridge University Press, pp. 62–85.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin&sokhey.childlabor2012.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[16]</div>
+    <div class="article-body">
+      <p><a href="http://emcdaniel.webhost.utexas.edu/">McDaniel, Eric L.</a>, Irfan Nooruddin, and <a href="http://psc.ou.edu/allyson-shortle">Allyson F. Shortle</a>. 2011. "<a href="http://apr.sagepub.com/content/39/1/205">Divine Boundaries: How Religion Shapes Citizens' Attitudes Towards Immigrants</a>." <em>American Politics Research</em>, 39(1): 205–233.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/VF4VLD">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/mcdanielnooruddinshortle.apr2011.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[15]</div>
+    <div class="article-body">
+      <p><a href="http://www.thomas-flores.com/">Flores, Thomas Edward</a>, and Irfan Nooruddin. 2011. "Credible Commitment in Post-Conflict Recovery." In <em><a href="http://amzn.com/1848442483">Handbook on the Political Economy of War</a></em>, edited by Christopher J. Coyne and Rachel Mathers. London: Edward Elgar, pp. 474–497.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/floresnooruddin.handbook2011.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[14]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan, and <a href="http://mwpweb.eu/AutumnLockwoodPayton/">Autumn Lockwood Payton</a>. 2010. "<a href="http://jpr.sagepub.com/content/47/6/711.short">Dynamics of Influence in International Politics: The ICC, BIAs, and Economic Sanctions</a>." <em>Journal of Peace Research</em>, 47(6): 711–721.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/N48UQJ">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin&payton.jpr2010.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[13]</div>
+    <div class="article-body">
+      <p><a href="http://www.princeton.edu/~ajamal/">Jamal, Amaney</a>, and Irfan Nooruddin. 2010. "<a href="http://dx.doi.org/10.1017/S0022381609990466">The Democratic Utility of Trust: A Cross-National Analysis</a>." <em>Journal of Politics</em>, 72(1): 45–59.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/jamal&nooruddin.jop2010.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[12]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan, and <a href="http://www9.georgetown.edu/faculty/jrv24/">James Raymond Vreeland</a>. 2010. "The Effect of IMF Programs on Public Wages and Salaries." In <em><a href="http://www.routledge.com/books/details/9780415780490/">Global Governance, Poverty, and Inequality</a></em>, edited by Rorden Wilkinson and Jennifer Clapp. London: Routledge, pp. 90–111.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin&vreeland2010.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[11]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan, and <a href="http://joel.simmons.googlepages.com/">Joel W. Simmons</a>. 2009. "<a href="https://doi.org/10.1111/j.1468-2478.2009.00558.x">Openness, Uncertainty, and Social Spending: Implications for the Globalization-Welfare State Debate</a>." <em>International Studies Quarterly</em>, 53: 841–866.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/ZQSIJH">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin&simmons.isq2009.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[10]</div>
+    <div class="article-body">
+      <p><a href="http://www.thomas-flores.com/">Flores, Thomas Edward</a>, and Irfan Nooruddin. 2009. "<a href="http://jcr.sagepub.com/content/53/1/3.short">Democracy Under the Gun: Understanding Post-Conflict Economic Recovery</a>." <em>Journal of Conflict Resolution</em>, 53(1): 3–29.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/PDKAK6">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/flores&nooruddin.jcr2009.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[9]</div>
+    <div class="article-body">
+      <p><a href="http://www.thomas-flores.com/">Flores, Thomas Edward</a>, and Irfan Nooruddin. 2009. "<a href="http://link.springer.com/article/10.1007/s11558-008-9039-0">Financing the Peace: Evaluating World Bank Post-Conflict Assistance Programs</a>." <em>Review of International Organizations</em>, 4(1): 1–27.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/GV19VU">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/flores&nooruddin.roio2009.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[8]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan. 2008. "<a href="http://www.tandfonline.com/doi/abs/10.1080/03050620802083228">The Political Economy of National Debt Burdens, 1970–2000</a>." <em>International Interactions</em>, 34(2): 156–185.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/X2WCJ6">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin.ii2008.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[7]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan, and <a href="http://polisci.berkeley.edu/people/person/pradeep-k-chhibber">Pradeep Chhibber</a>. 2008. "<a href="http://cps.sagepub.com/content/41/8/1069.short">Unstable Politics: Fiscal Space and Electoral Volatility in the Indian States</a>." <em>Comparative Political Studies</em>, 41(8): 1069–1081.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/UVYM1X">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin&chhibber.cps2008.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[6]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan. 2007. "<a href="http://dx.doi.org/10.1017/S1743923X07000293">Blind Justice: 'Seeing' Race and Gender in Cases of Violent Crime</a>." <em>Politics and Gender</em>, 3(3): 321–348.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/ZICRPC">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin.pg2007.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[5]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan, and <a href="http://joel.simmons.googlepages.com/">Joel W. Simmons</a>. 2006. "<a href="http://dx.doi.org/10.1017/S0020818306060334">The Politics of Hard Choices: IMF Programs and Government Spending</a>." <em>International Organization</em>, 60(4): 1001–1033.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/UELX42">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin&simmons.io2006.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[4]</div>
+    <div class="article-body">
+      <p>Kretzmann, Stephen, and Irfan Nooruddin. 2005. <em><a href="https://oilchange.org/publications/drilling-into-debt-an-investigation-into-the-relationship-between-debt-and-oil/">Drilling Into Debt</a></em>. Washington, DC: OilChange International; London: IPPR; Washington, DC: Jubilee USA.</p>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[3]</div>
+    <div class="article-body">
+      <p><a href="http://polisci.berkeley.edu/people/person/pradeep-k-chhibber">Chhibber, Pradeep</a>, and Irfan Nooruddin. 2004. "<a href="http://cps.sagepub.com/content/37/2/152.short">Do Party Systems Matter? The Number of Parties and Government Performance in the Indian States</a>." <em>Comparative Political Studies</em>, 37(2): 152–187.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/UNANIS">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/chhibber&nooruddin.cps2004.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[2]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan. 2002. "<a href="http://www.tandfonline.com/doi/abs/10.1080/03050620210394">Modeling Selection Bias in Studies of Sanctions Efficacy</a>." <em>International Interactions</em>, 28(1): 57–74.</p>
+      <div class="article-links">
+        <a href="https://doi.org/10.7910/DVN/SRI9RB">Replication data</a>
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin.ii2002.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[1]</div>
+    <div class="article-body">
+      <p><a href="http://polisci.berkeley.edu/people/person/pradeep-k-chhibber">Chhibber, Pradeep</a>, and Irfan Nooruddin. 2000. "Party Competition and Fragmentation in Indian National Elections: 1957–1998." In <em><a href="http://www.sagepub.com/booktoc.aspx?pid=8241&sc=1">Indian Politics and the 1998 Elections</a></em>, edited by Paul Wallace and Ramashray Roy. New Delhi: Sage Publications, pp. 36–54.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/chhibber&nooruddin1999.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOK REVIEWS -->
+  <div class="section-head">Book Reviews</div>
+
+  <div class="article">
+    <div class="article-num">[4b]</div>
+    <div class="article-body">
+      <p>Shortle, Allyson, Irfan Nooruddin, &amp; Eric McDaniel. 2023. Response to Jason C. Bivins's Review of <em>The Everyday Crusade</em>. <em>Perspectives on Politics</em>, 21(3): 1066–1067.</p>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[4a]</div>
+    <div class="article-body">
+      <p>Shortle, Allyson, Irfan Nooruddin, &amp; Eric McDaniel. 2023. Review of <em>Embattled America</em> by Jason C. Bivins. <em>Perspectives on Politics</em>, 21(3): 1062–1064.</p>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[3]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan. 2013. "<a href="http://inp.sagepub.com/content/1/2/248.abstract">Review of <em>Corruption and Reform in India</em> by Jennifer Bussell</a>." <em>Studies in Indian Politics</em>, 1(2): 248–249.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/studies_in_indian_politics-2013-nooruddin-248-9.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[2]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan. 2012. "<a href="https://doi.org/10.1017/S1537592712001788">Review of <em>Electoral Systems and the Balance of Consumer-Producer Power</em> by Eric C.C. Chang et al.</a>" <em>Perspectives on Politics</em>, 10(4): 1012–1013.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin.pop2012.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[1]</div>
+    <div class="article-body">
+      <p>Nooruddin, Irfan. 2004. "<a href="https://doi.org/10.1017/S1537592704670976">Review of <em>The Production of Hindu-Muslim Violence in Contemporary India</em> by Paul Brass</a>." <em>Perspectives on Politics</em>, 2(2): 396–397.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/nooruddin.pop2004.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- POLICY REPORTS -->
+  <div class="section-head">Policy Reports</div>
+
+  <div class="article">
+    <div class="article-num">[3]</div>
+    <div class="article-body">
+      <p>2024. <em><a href="https://modimirage.shorthandstories.com/">The Modi Mirage? Illusions and Realities of India's Global Standing</a></em>. London: Friends of Democracy. With R. Manuvie and Subir Sinha.</p>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[2]</div>
+    <div class="article-body">
+      <p>2023. <em><a href="https://www.atlanticcouncil.org/in-depth-research-reports/issue-brief/the-future-of-women-in-india-barriers-facilitators-and-opportunities/">The Future of Women in India: Barriers, Facilitators and Opportunities</a></em>. Washington, DC: Atlantic Council. With Amita Vyas, Misha Iqbal, Capucine Querenet, and Harris Samad.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/2023_ac_future-of-women-in-india.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="article-num">[1]</div>
+    <div class="article-body">
+      <p>2005. <em><a href="http://priceofoil.org/content/uploads/2011/01/DrillingIntoDebt.pdf">Drilling Into Debt</a></em>. Washington, DC: OilChange International; London: IPPR; Washington, DC: Jubilee USA. With Steve Kretzmann.</p>
+      <div class="article-links">
+        <a href="https://www.irfannooruddin.org/uploads/3/0/9/6/30962817/drillingintodebt.pdf">PDF</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Irfan Nooruddin &mdash; last updated 2025
+</footer>
+
+</body>
+</html>
